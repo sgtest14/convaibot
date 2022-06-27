@@ -1,35 +1,37 @@
-version:'3.4'
+version: '3.4'
 services:
-	rasa:
-		image: rasa-bot:latest
-		working_dir: /app
-		build: "./"
-		restart: always
-    volumes: 
+
+  rasa-server:
+    image: rasa/rasa:1.10.7-full
+    working_dir: /app
+    build: "./"
+    restart: always
+    volumes:
     - ./actions:/app/actions
     - ./data:/app/data
     command: bash -c "rm -rf models/* && rasa train && rasa run --enable-api --cors \"*\" --debug"
-    ports: 
-    - '5005:5005'
-    public: true
+    ports:
+    - '5006:5005'
+    #public: true
     networks:
     - all
 
   rasa-actions-server:
-    image: rasa-bot:latest
+    image: rasa/rasa-sdk:1.10.2
     working_dir: /app
     build: "./"
     restart: always
-    volumes: 
+    volumes:
     - ./actions:/app/actions
+    - ./utils:/app/utils
     command: ["rasa", "run", "actions"]
     ports:
     - '5055:5055'
     networks:
-    - all  
+    - all
 
 networks:
   all:
-    driver:bridge
+    driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "true"
