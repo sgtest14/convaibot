@@ -1,0 +1,188 @@
+version: "3.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yeah
+    - Yes that works
+    - good for me
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+    - i deny that
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: order_status
+  examples: |
+    - I just wanted to confirm that the unit I just ordered is the i7 10510U processor. I tried digging through the product details sheet, but could not find a clear indication that it was.
+    - I placed this order on dec 21 paid with PayPal, however I noticed today that the money went back into my account
+    - it seems my order has been delayed
+    - I’m very concerned about my product being delivered soon
+    - Any chance of an early ship date?
+    - Thank you just inquiring about my order status
+    - Hi can I please track my order and is it possible to have a accurate delivery date
+    - I am contacting you about order status details
+    - order status
+    - can you help me with my order
+    - i need to know about date of shipping
+    - could you please confirm that estimate for the delivery date?
+    - can you please verifiy the delivery date please ?
+    - i want to know the delivery date of my order
+    - when likely to ship?
+    - when can i expect delivery?
+    - how soon will i receive my delivery?
+    - when my delivery will arrive?
+    - has my order shipped
+    - inquiry about shipping status
+    - shipping status question
+    - delivery status issue
+    - inquiring on delivery status
+    - question regarding shipping status
+    - is it possible to check on the status of my order.
+    - checking on order status of the laptop.
+    - checking status of my laptop order.
+    - Please let me know the status of my delivery
+    - is it shipping today?
+    - it is already shipped?
+    - i am not sure about my order status
+    - i cannot find my order status
+    - i cannot look up an order status
+    - i cant see my order status
+    - i cant see my order when i go to order status
+    - i don't understand the status of my order.
+    - status of order has not been updated since placing order.
+    - no updated status on my order
+    - no updates for my order.
+    - no updates for shipment
+    - no updates of the order
+    - no updates on order"
+- intent: user_details
+  examples: |
+    - My name is [Maxwell](name) phone number [4024800686](phone_number) email address [maxpfeiffer30@hotmail.com](email_address) and the order number is [256328714](order_number)
+    - name [Liudmila](name) phone number [9164767583](phone_number) email address [anya.vidit@gmail.com](email_address) order number [922358832](order_number)
+    - [khai](name), [6047800280](phone_number), [realtorkevinfung@gmail.com](email_address), [321413005](order_number)
+    - here we go name [priyanka](name), email ID [amandamkuroshima@gmail.com](email_address), order number[630873925](order_number), contact number [4168774002](phone_number)
+    - Ho Okay, [Ron](name) [5155566808](phone_number) [251654593](order_number) [rgolfk@msn.com](email_address)
+    - [alexander](name), [5035722380](phone_number), [alex56743ikl@gmail.com](email_address), [421489645](order_number)
+    - let me provide them my contact number is [7148529026](phone_number) and the order number [945352655](order_number) then the email is [alipacheco94@gmail.com](email_address) name [ali](name)
+    - [07564703511](phone_number) email [steven.bennett6@icloud.com](email_address) name [steven](name) [191969810](order_number)
+    - [Tansey Joseph](name), [6046911290](phone_number), [josephtansey@gmail.com](email_address), [512398756](order_number)
+    - [Mike](name), [3925297709](phone_number), [mike@gmail.com](email_address), [698764321](order_number)
+    - [155 Hart Ridge Road Bay City Michigan 989-254-4342 48706 United States](address)
+    - [CHRIS NISWANDEE SMALLSYS INC 795 E DRAGRAM TUCSON AZ 85705 USA](address)
+    - [3604 Yorkie Lane Saint Marys Georgia 912-882-5564 31558 United States](address)
+    - here we go the address of mine is [3689 Bryan Avenue Literberry Illinois 651-271-2639 62660 United States](address)
+    - my address is [3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States](address)
+    - address [4001 Oak Drive, Corinth, New York, 518-654-1568, 12822, United States](address)
+    - [123456789](order_number)
+    - [manjuchandu555@gmail.com](email_address)
+    - [4067788972](phone_number)
+    - [3145, Mudlick Road, Spokane, Washington, 509-479-4254, 99201, United States](address)
+    - [742890907](order_number)
+    - [805189262](order_number)
+    - [805189262](order_number)
+- intent: order_returns
+  examples: |
+    - My order is just delivered. I realized that I ordered wrong model. How can I return this?
+    - I am not happy with my recent order. The monitor quality does not meet my expectation and i want to return it
+    - Hi. I need to return my order. Can you please advise how to go about that
+    - hello, initiated a return for order
+    - How do I go about returning my mouse?
+    - order returns
+    - how can i return my order?
+    - how can i proceed with an order return?
+    - is there a time frame I should return it? My order was received on Aug 00, and the invoice date is Aug 00
+    - We received this item today and would like to return it for a different model. I have been on hold for the last 30 mins.
+    - what is the return process?
+    - returning an item
+    - returning item
+    - returning items
+    - returning the item
+    - returning the item i received.
+- intent: drop_off
+  examples: |
+    - drop off the package
+    - just drop off
+    - drop off
+    - dropoff
+- intent: pick_up
+  examples: |
+    - pick up the package
+    - just pick up
+    - pick up
+    - pickup

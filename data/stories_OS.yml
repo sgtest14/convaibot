@@ -1,0 +1,776 @@
+version: "3.0"
+
+stories:
+
+- story: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+################# OS ################
+- story: OS
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+
+- story: OS_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+
+################# OS + Credit ################
+- story: OS+OR_Credit
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '256328714'
+  - slot_was_set:
+    - order_number: '256328714'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: affirm
+  - action: utter_credit
+
+- story: OS_ON-Change+OR_Credit
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '256328714'
+  - slot_was_set:
+    - order_number: '256328714'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: affirm
+  - action: utter_credit
+
+- story: OS+OR_Credit_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '256328714'
+  - slot_was_set:
+    - order_number: '256328714'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: affirm
+  - action: utter_credit
+
+- story: OS_ON-Change+OR_Credit_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '256328714'
+  - slot_was_set:
+    - order_number: '256328714'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: affirm
+  - action: utter_credit
+
+################# OS + Dropoff ################
+- story: OS+OR_Dropoff
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '924358632'
+  - slot_was_set:
+      - order_number: '924358632'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: drop_off
+  - action: utter_drop_off
+  - action: utter_drop_off_nearest
+
+- story: OS_ON-Change+OR_Dropoff
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '924358632'
+  - slot_was_set:
+      - order_number: '924358632'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: drop_off
+  - action: utter_drop_off
+  - action: utter_drop_off_nearest
+
+- story: OS+OR_Dropoff_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '924358632'
+  - slot_was_set:
+      - order_number: '924358632'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: drop_off
+  - action: utter_drop_off
+  - action: utter_drop_off_nearest
+
+- story: OS_ON-Change+OR_Dropoff_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '924358632'
+  - slot_was_set:
+      - order_number: '924358632'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: drop_off
+  - action: utter_drop_off
+  - action: utter_drop_off_nearest
+
+################# OS + Pickup ################
+- story: OS+OR_Pickup
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+      - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: pick_up
+  - action: utter_user_address
+  - intent: user_details
+    entities:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - slot_was_set:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - action: action_order_returns
+  - slot_was_set:
+    - order_number: null
+  - slot_was_set:
+    - address: null
+
+- story: OS_ON-Change+OR_Pickup
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+      - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: pick_up
+  - action: utter_user_address
+  - intent: user_details
+    entities:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - slot_was_set:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - action: action_order_returns
+  - slot_was_set:
+    - order_number: null
+  - slot_was_set:
+    - address: null
+
+- story: OS+OR_Pickup_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+    - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+      - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: pick_up
+  - action: utter_user_address
+  - intent: user_details
+    entities:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - slot_was_set:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - action: action_order_returns
+  - slot_was_set:
+    - order_number: null
+  - slot_was_set:
+    - address: null
+
+- story: OS_ON-Change+OR_Pickup_ON-Change
+  steps:
+  - intent: order_status
+  - action: utter_understand_concern
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '922358832'
+  - slot_was_set:
+    - order_number: '922358832'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '987654321'
+  - slot_was_set:
+    - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: action_order_status
+  - slot_was_set:
+    - order_number: null
+  - intent: order_returns
+  - action: utter_understand_concern_order_returns
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+    - order_number: '321413065'
+  - slot_was_set:
+      - order_number: '321413065'
+  - action: action_order_status_verify
+  - intent: deny
+  - action: utter_user_details
+  - intent: user_details
+    entities:
+      - order_number: '987654321'
+  - slot_was_set:
+      - order_number: '987654321'
+  - action: action_order_status_verify
+  - intent: affirm
+  - action: utter_credit_amount
+  - intent: deny
+  - action: utter_assist_return
+  - action: utter_drop_up_off
+  - intent: pick_up
+  - action: utter_user_address
+  - intent: user_details
+    entities:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - slot_was_set:
+    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+  - action: action_order_returns
+  - slot_was_set:
+    - order_number: null
+  - slot_was_set:
+    - address: null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#- story: OR_Credit_Greet
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '256328714'
+#  - slot_was_set:
+#    - order_number: '256328714'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: affirm
+#  - action: utter_credit
+#
+#- story: OR_Credit_ON-Change_Greet
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '256328714'
+#  - slot_was_set:
+#    - order_number: '256328714'
+#  - action: action_order_status_verify
+#  - intent: deny
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#      - order_number: '987654321'
+#  - slot_was_set:
+#      - order_number: '987654321'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: affirm
+#  - action: utter_credit
+
+
+#- story: OR_Dropoff
+#  steps:
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '924358632'
+#  - slot_was_set:
+#      - order_number: '924358632'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: deny
+#  - action: utter_assist_return
+#  - action: utter_drop_up_off
+#  - intent: drop_off
+#  - action: utter_drop_off
+#  - action: utter_drop_off_nearest
+#
+#- story: OR_Dropoff_ON-Change
+#  steps:
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '924358632'
+#  - slot_was_set:
+#      - order_number: '924358632'
+#  - action: action_order_status_verify
+#  - intent: deny
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#      - order_number: '987654321'
+#  - slot_was_set:
+#      - order_number: '987654321'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: deny
+#  - action: utter_assist_return
+#  - action: utter_drop_up_off
+#  - intent: drop_off
+#  - action: utter_drop_off
+#  - action: utter_drop_off_nearest
+#
+#- story: OR_Pickup
+#  steps:
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '321413065'
+#  - slot_was_set:
+#      - order_number: '321413065'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: deny
+#  - action: utter_assist_return
+#  - action: utter_drop_up_off
+#  - intent: pick_up
+#  - action: utter_user_address
+#  - intent: user_details
+#    entities:
+#    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+#  - slot_was_set:
+#    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+#  - action: action_order_returns
+#  - slot_was_set:
+#    - order_number: null
+#  - slot_was_set:
+#    - address: null
+#
+#- story: OR_Pickup_ON-Change
+#  steps:
+#  - intent: order_returns
+#  - action: utter_understand_concern_order_returns
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '321413065'
+#  - slot_was_set:
+#      - order_number: '321413065'
+#  - action: action_order_status_verify
+#  - intent: deny
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#      - order_number: '987654321'
+#  - slot_was_set:
+#      - order_number: '987654321'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: utter_credit_amount
+#  - intent: deny
+#  - action: utter_assist_return
+#  - action: utter_drop_up_off
+#  - intent: pick_up
+#  - action: utter_user_address
+#  - intent: user_details
+#    entities:
+#    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+#  - slot_was_set:
+#    - address: 3110 Tibbs Avenue Abbeville Alabama 406-778-8972 36310 United States
+#  - action: action_order_returns
+#  - slot_was_set:
+#    - order_number: null
+#  - slot_was_set:
+#    - address: null
+#
+#- story: OS
+#  steps:
+#  - intent: order_status
+#  - action: utter_understand_concern
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '321413065'
+#  - slot_was_set:
+#    - order_number: '321413065'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: action_order_status
+#  - slot_was_set:
+#    - order_number: null
+#
+#- story: OS_ON-Change
+#  steps:
+#  - intent: order_status
+#  - action: utter_understand_concern
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '922358832'
+#  - slot_was_set:
+#    - order_number: '922358832'
+#  - action: action_order_status_verify
+#  - intent: deny
+#  - action: utter_user_details
+#  - intent: user_details
+#    entities:
+#    - order_number: '987654321'
+#  - slot_was_set:
+#    - order_number: '987654321'
+#  - action: action_order_status_verify
+#  - intent: affirm
+#  - action: action_order_status
+#  - slot_was_set:
+#    - order_number: null

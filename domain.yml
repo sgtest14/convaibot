@@ -1,0 +1,117 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- user_details
+- affirm
+- order_returns
+- deny
+- greet
+- drop_off
+- order_status
+- pick_up
+- goodbye
+- mood_great
+- mood_unhappy
+- bot_challenge
+entities:
+- address
+- email_address
+- name
+- order_number
+- phone_number
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: name
+  phone_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: phone_number
+  email_address:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: email_address
+  order_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: order_number
+  address:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: address
+responses:
+  utter_greet:
+  - text: Thank you for contacting Dell! Here are my services for you ?
+    buttons:
+    - title: Order Status
+      payload: /order_status
+    - title: Order Returns
+      payload: /order_returns
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Dell.
+  utter_user_details:
+  - text: what is your order number ?
+  utter_verify:
+  - text: I have your name as {name} email address as {email_address} and phone number as {phone_number} order number as {order_number}, Is that correct ?"
+  utter_understand_concern:
+  - text: I understand your concern about the order status. Let me check what best I can do for you.
+  utter_understand_concern_order_returns:
+  - text: I understand your concern about the order return. Let me check what best I can do for you.
+  utter_credit_amount:
+  - text: If you wish to keep the product for any other purpose family friends, we would like to offer you 7% refund of the Order value (Pre-Tax). Please confirm if this Good
+  utter_assist_return:
+  - text: We respect your decision. I will assist you with the return process.
+  utter_drop_up_off:
+  - text: Do you want to drop off the package at FedEx store or want a pick up to be arranged ?
+  utter_user_address:
+  - text: Would you mind me to help me with your address ?
+  utter_drop_off:
+  - text: Please be informed that I have initiated the return and placed a request to process the full refund on this order. You would receive the return label within next 24 hours. Please print the label and attach the label to the box and write the Return Authorization Number anywhere on the box
+  utter_drop_off_nearest:
+  - text: Kindly drop off the package at your nearest Purolator store within the next 5 days as the return label would be valid for next 5 business days
+  utter_credit:
+  - text: Credit will be applied to the original mode of payment in 10-15 business days, Thank you!
+  utter_thanks:
+  - text: Thank you for confirming.
+  utter_wait:
+  - text: Please allow me 2-3 minutes while I check the information and get back to you with a resolution
+actions:
+- action_order_returns
+- action_order_status
+- action_order_status_verify
+- utter_assist_return
+- utter_credit
+- utter_credit_amount
+- utter_drop_off
+- utter_drop_off_nearest
+- utter_drop_up_off
+- utter_goodbye
+- utter_greet
+- utter_thanks
+- utter_understand_concern
+- utter_understand_concern_order_returns
+- utter_user_address
+- utter_user_details
+- utter_wait
