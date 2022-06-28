@@ -1,8 +1,8 @@
+FROM rasa/rasa:3.1.0-full
+USER root
 WORKDIR /app
-
-RUN pip install rasa==2.8.1
-
-ADD config.yml config.yml
-ADD domain.yml domain.yml
-ADD endpoints.yml endpoints.yml
-ADD credentials.yml credentials.yml
+COPY . /app
+COPY ./data /app/data
+VOLUME /app
+VOLUME /app/data
+CMD ["run", "--cors" ,"*", "--enable-api","--endpoints" ,"endpoints.yml" ,"--debug"]

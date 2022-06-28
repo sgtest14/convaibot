@@ -3,15 +3,15 @@
 # Server where the models are pulled from.
 # https://rasa.com/docs/rasa/model-storage#fetching-models-from-a-server
 
-#models:
-#  url: http://my-server.com/models/default_core@latest
-#  wait_time_between_pulls:  10   # [optional](default: 100)
+models:
+  url: https://github.com/sgtest14/convaibot/tree/main/models/
+  wait_time_between_pulls:  null
 
 # Server which runs your custom actions.
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-  url: "http://rasa-actions-server/webhook"
+  url: "http://action_server:5055/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
