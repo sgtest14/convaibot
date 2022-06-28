@@ -3,6 +3,8 @@ USER root
 WORKDIR /app
 COPY . /app
 COPY ./data /app/data
+RUN rasa train -c ./config.yml -d ./domain.yml --data ./data --debug
 VOLUME /app
 VOLUME /app/data
-CMD ["run", "--cors" ,"*", "--enable-api","--endpoints" ,"endpoints.yml" ,"--debug"]
+VOLUME /app/models
+CMD ["run", "--cors" ,"*", "-m" ,"/app/models" ,"--enable-api","--endpoints" ,"endpoints.yml" ,"--debug"]
