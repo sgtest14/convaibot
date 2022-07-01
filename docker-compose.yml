@@ -4,13 +4,12 @@ services:
       image: rasa/rasa:3.1.0-full
       build: './'
       volumes:
-      - ./data: /app/data
-      - ./actions: /app/actions
-      - ./models: /app/models
+        - ./data: /app/data
+        - ./actions: /app/actions
+        - ./models: /app/models
       ports: 
         - '5006:5005'
       public: true
-      restart: always
       depends_on:
         - action-server
       command: rasa run --enable-api
