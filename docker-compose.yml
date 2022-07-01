@@ -2,27 +2,28 @@ version: '3.0'
 services:
     rasa-server:
       container_name: "rasa-server"
-      build: 
-        context: .
+      image: rasa/rasa:3.1.0-full
+      build: "./"
       volumes:
-      - "./:/app"
+      - ./data: /app/data
+      - ./actions: /app/actions
+      - ./models: /app/models
       ports: 
         - "5006:5005"
-      command:
-        - run
       public: true
       restart: always
       depends_on:
-        - action-server 
+        - action-server
+      command: rasa run --enable-api --cors \"*\""
+      working_dir: /app
 
     action-server:
       container_name: "action-server"
-      build: 
-        context: actions
+      image: rasa/rasa-sdk:3.1.1
+      build: "./"
       volumes:
         - ./actions:/app/actions
-        - ./data:/app/data
       ports:
         - "5055:5055"
-      command:
-        - start
+      command: bash -c "rasa run actions"
+      working_dir: /app
