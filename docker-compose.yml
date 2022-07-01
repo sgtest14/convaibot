@@ -8,7 +8,7 @@ services:
       volumes:
       - ./actions:/app/actions
       - ./data:/app/data
-      command: ["rasa","train", "&&", "rasa", "run", "--enable-api", "--cors", "\"*\"", "--debug"]
+      command: ["run", "--enable-api", "--cors", "\"*\"", "--debug"]
       ports: 
       - '5006:5005'
       public: true
@@ -23,7 +23,7 @@ services:
       volumes:
       - ./actions:/app/actions
       - ./utils:/app/utils
-      command: ["rasa", "run", "actions"]
+      command: ["run", "actions"]
       ports:
       - '5055:5055'
       networks:
