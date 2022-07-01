@@ -1,26 +1,24 @@
 version: '3.0'
 services:
-    rasa-server:
-      image: rasa/rasa:3.1.0-full
-      build: './'
+    rasa:
+      container_name: "rasa_server"
+      build: 
+        context: .
       volumes:
-        - ./data: /app/data
-        - ./actions: /app/actions
-        - ./models: /app/models
+      - "./:/app"
       ports: 
-        - '5006:5005'
-      public: true
-      depends_on:
-        - action-server
-      command: rasa run --enable-api
-      working_dir: /app
+        - "5006:5005"
+      command:
+        - run
 
-    action-server:
-      image: rasa/rasa-sdk:3.1.1
-      build: './'
+    action_server:
+      container_name: "action_server"
+      build: 
+        context: actions
       volumes:
         - ./actions:/app/actions
+        - ./data:/app/data
       ports:
-        - '5055:5055'
-      command: bash -c "rasa run actions"
-      working_dir: /app
+        - "5055:5055"
+      command:
+        - start
