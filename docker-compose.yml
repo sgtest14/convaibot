@@ -1,18 +1,22 @@
 version: '3.0'
 services:
-    rasa:
-      container_name: "rasa_server"
+    rasa-server:
+      container_name: "rasa-server"
       build: 
         context: .
       volumes:
       - "./:/app"
       ports: 
-        - "5005:5005"
+        - "5006:5005"
       command:
         - run
+      public: true
+      restart: always
+      depends_on:
+        - action-server 
 
-    action_server:
-      container_name: "action_server"
+    action-server:
+      container_name: "action-server"
       build: 
         context: actions
       volumes:
