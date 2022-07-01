@@ -1,6 +1,5 @@
 name: convaibot
 autocreate: true
-image: 
 command: bash
 volumes:
   - /root/.cache/pip
