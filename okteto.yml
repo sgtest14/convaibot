@@ -1,4 +1,4 @@
-name: okteto-rasa-bot
+name: convai
 image: okteto.dev/rasa-server-okteto:latest
 command: bash
 volumes:
