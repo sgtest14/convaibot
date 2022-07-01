@@ -10,7 +10,13 @@ services:
       public: true
       depends_on:
       - action-server
-      command: run
+      command:
+      - run
+      - --cors
+      - "*"
+      - --enable-api
+      - -p 5006
+      - -m models/20220624-154440-fat-dingo.tar.gz
       working_dir: /app
 
     action-server:
