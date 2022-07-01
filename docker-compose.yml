@@ -1,7 +1,7 @@
 version: '3.0'
 services:
     rasa-server:
-      image: rasa:3.1.0-full
+      image: rasa/rasa:3.1.0-full
       build: './'
       volumes:
       - ./:/app
@@ -20,7 +20,7 @@ services:
       working_dir: /app
 
     action-server:
-      image: rasa-sdk:3.1.1
+      image: rasa/rasa-sdk:3.1.1
       build: './'
       volumes:
       - ./actions:/app/actions
