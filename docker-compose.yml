@@ -1,10 +1,12 @@
 version: '3.0'
 services:
     rasa-server:
-      image: rasa/rasa:3.1.0-full
+      image: rasa-server-okteto:latest
       build: './'
       volumes:
       - ./:/app
+      - ./data:/app/data
+      - ./models:/app/models
       ports: 
       - '5006:5005'
       public: true
@@ -17,10 +19,12 @@ services:
       - --enable-api
       - -p 5006
       - -m models/20220624-154440-fat-dingo.tar.gz
-      working_dir: /app
+      working_dir:/app
+      networks:
+      - all
 
     action-server:
-      image: rasa/rasa-sdk:3.1.1
+      image: rasa-server-okteto:latest
       build: './'
       volumes:
       - ./actions:/app/actions
@@ -28,3 +32,10 @@ services:
       - '5055:5055'
       command: run actions
       working_dir: /app
+      networks:
+      - all
+
+networks:
+  all: bridge
+  driver_opts:
+    com.docker.network.enable.ipv6: true
