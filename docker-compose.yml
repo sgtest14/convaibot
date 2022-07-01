@@ -10,7 +10,7 @@ services:
       public: true
       depends_on:
       - action-server
-      command: rasa run --enable-api
+      command: run
       working_dir: /app
 
     action-server:
@@ -20,5 +20,5 @@ services:
       - ./actions:/app/actions
       ports:
       - '5055:5055'
-      command: bash -c "rasa run actions"
+      command: run actions
       working_dir: /app
