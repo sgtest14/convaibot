@@ -13,7 +13,7 @@ services:
       restart: always
       depends_on:
         - action-server
-      command: rasa run --enable-api --cors \"*\""
+      command: rasa run --enable-api
       working_dir: /app
 
     action-server:
