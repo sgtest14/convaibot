@@ -1,4 +1,4 @@
-name: convai
+name: convaibot
 autocreate: true
 image: 
 command: bash
